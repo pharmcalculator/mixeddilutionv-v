@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Percentage v/v Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    text-align: center;
+  }
+  h2 {
+    color: #333;
+  }
+  label {
+    margin-right: 10px;
+  }
+  input[type="number"], input[type="submit"], input[type="reset"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+  }
+  input[type="submit"], input[type="reset"] {
+    width: 150px;
+  }
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  input[type="reset"] {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .container {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .note {
+    color: #777;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Final Percentage v/v Calculator</h2>
+  <p class="note">Use this calculator to determine the final percentage v/v of a solution when mixing two different solutions.</p>
+  <form id="finalPercentageCalculator">
+    <label for="volumeSolution1">Volume of Solution 1 (mL):</label>
+    <input type="number" id="volumeSolution1" name="volumeSolution1" min="0" step="any" placeholder="Enter volume of Solution 1" required><br>
+    
+    <label for="percentageSolution1">Percentage v/v of Solution 1:</label>
+    <input type="number" id="percentageSolution1" name="percentageSolution1" min="0" step="any" placeholder="Enter percentage v/v of Solution 1" required><br>
+
+    <label for="volumeSolution2">Volume of Solution 2 (mL):</label>
+    <input type="number" id="volumeSolution2" name="volumeSolution2" min="0" step="any" placeholder="Enter volume of Solution 2" required><br>
+    
+    <label for="percentageSolution2">Percentage v/v of Solution 2:</label>
+    <input type="number" id="percentageSolution2" name="percentageSolution2" min="0" step="any" placeholder="Enter percentage v/v of Solution 2" required><br>
+    
+    <div id="result"></div>
+    
+    <input type="submit" value="Calculate">
+    <input type="reset" value="Reset">
+  </form>
+</div>
+
+<script>
+document.getElementById('finalPercentageCalculator').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var volumeSolution1 = parseFloat(document.getElementById('volumeSolution1').value);
+  var percentageSolution1 = parseFloat(document.getElementById('percentageSolution1').value);
+  var volumeSolution2 = parseFloat(document.getElementById('volumeSolution2').value);
+  var percentageSolution2 = parseFloat(document.getElementById('percentageSolution2').value);
+  var resultContainer = document.getElementById('result');
+  
+  // Calculate the final percentage v/v
+  var totalVolume = volumeSolution1 + volumeSolution2;
+  var finalPercentage = ((volumeSolution1 * percentageSolution1) + (volumeSolution2 * percentageSolution2)) / totalVolume;
+  
+  resultContainer.innerHTML = 'The final percentage v/v is ' + finalPercentage.toFixed(2) + '%.';
+});
+</script>
+</body>
+</html>
